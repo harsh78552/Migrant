@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 from pathlib import Path
 
+import cloudinary
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -121,10 +122,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-try:
-    import cloudinary  # type: ignore[import]
-except ImportError:
-    cloudinary = None
+
 
 cloudinary.config(
     cloud_name=os.getenv('cloud_name', ''),
